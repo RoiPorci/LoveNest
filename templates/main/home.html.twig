@@ -3,7 +3,45 @@
 {% block title %}{{ parent() }}Lovenest{% endblock %}
 
 {% block body %}
-<div>
-
+<div class="container-fluid parallax hero my-4 p-0" style="background-image: url({{ asset('img/hero.jpg') }})">
+    <div class="container-fluid hero overlay-dark">
+        <div class="container d-flex justify-content-center">
+            <div>
+                <div class="col p-4 text-center my-auto" style="min-height: 600px">
+                    <h1 class="hero-title">
+                        <i class="fas fa-heart"></i> TROUVEZ VOTRE NID D'AMOUR <i class="fas fa-heart"></i>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="container-fluid bg-transparent text-center">
+    <h1>LOVENEST <i class="fas fa-heart"></i></h1>
+</div>
+    <div class="container parallax rounded p-0" style="background-image: url({{ asset('img/background-body.jpg') }})">
+        <div class="container-fluid overlay-dark p-4">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum risus arcu, a cursus purus vulputate
+                id. Praesent vestibulum augue facilisis ante tincidunt vulputate. Proin cursus felis et massa sagittis, vel
+                congue leo gravida. In pretium luctus nunc, vel consequat sapien semper nec. Mauris pretium fringilla laoreet.
+                Phasellus tincidunt condimentum tincidunt. Vestibulum quis ligula vitae tortor viverra consequat ut vehicula
+                nisi.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum risus arcu, a cursus purus vulputate
+                id. Praesent vestibulum augue facilisis ante tincidunt vulputate. Proin cursus felis et massa sagittis, vel
+                congue leo gravida. In pretium luctus nunc, vel consequat sapien semper nec. Mauris pretium fringilla laoreet.
+                Phasellus tincidunt condimentum tincidunt. Vestibulum quis ligula vitae tortor viverra consequat ut vehicula
+                nisi.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum risus arcu, a cursus purus vulputate
+                id. Praesent vestibulum augue facilisis ante tincidunt vulputate. Proin cursus felis et massa sagittis, vel
+                congue leo gravida. In pretium luctus nunc, vel consequat sapien semper nec. Mauris pretium fringilla laoreet.
+                Phasellus tincidunt condimentum tincidunt. Vestibulum quis ligula vitae tortor viverra consequat ut vehicula
+                nisi.
+            </p>
+        </div>
+    </div>
 {% endblock %}

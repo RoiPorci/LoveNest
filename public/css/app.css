@@ -1,7 +1,25 @@
+body{
+    font-family: 'Ubuntu', sans-serif;
+}
+
 /* Logo */
 .logo{
     width: 200px;
     height: 40px;
+}
+
+/* Hero */
+
+.hero{
+    min-height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100vh auto;
+}
+
+.hero-title{
+    font-size: xxx-large;
 }
 
 /* Background */
