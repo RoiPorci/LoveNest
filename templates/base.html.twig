@@ -39,15 +39,18 @@
                             <div class="navbar-nav justify-content-end">
                                 <ul class="navbar-nav gap-2 me-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
-                                        <a class="btn btn-outline-white" aria-current="page" href="">
-                                            <i class="fas fa-user"></i> Déconnexion ()
-                                        </a>
-                                        <a class="btn btn-pink" aria-current="page" href="">
-                                            <i class="fas fa-heart"></i> <strong>Inscription</strong>
-                                        </a>
-                                        <a class="btn btn-outline-white" aria-current="page" href="">
-                                            <i class="fas fa-user"></i> Connexion
-                                        </a>
+                                        {%  if app.user %}
+                                            <a class="btn btn-outline-white" aria-current="page" href="{{ path('app_logout') }}">
+                                                <i class="fas fa-user"></i> Déconnexion ({{ app.user.username }})
+                                            </a>
+                                        {% else %}
+                                            <a class="btn btn-pink" aria-current="page" href="">
+                                                <i class="fas fa-heart"></i> <strong>Inscription</strong>
+                                            </a>
+                                            <a class="btn btn-outline-white" aria-current="page" href="{{ path('app_login') }}">
+                                                <i class="fas fa-user"></i> Connexion
+                                            </a>
+                                        {% endif %}
                                     </li>
                                 </ul>
                             </div>
