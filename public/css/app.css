@@ -5,9 +5,17 @@
 }
 
 /* Background */
+.background-lovenest{
+
+}
+
 .bg-purple{
     background-color: #1f125e;
     color: #f969b9;
+}
+
+.bg-transparent{
+    background-color: transparent;
 }
 
 /* Link */
