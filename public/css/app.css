@@ -1,0 +1,38 @@
+/* Logo */
+.logo{
+    width: 200px;
+    height: 40px;
+}
+
+/* Background */
+.bg-purple{
+    background-color: #1f125e;
+    color: #f969b9;
+}
+
+/* Link */
+.link-pink-light{
+    color: white;
+}
+.link-pink-light:hover{
+    color: #f969b9;
+}
+
+/* Button */
+.btn-pink{
+    background-color: #f969b9;
+    color: #1f125e;
+}
+.btn-pink:hover{
+    background-color: #f969b9;
+}
+
+.btn-outline-white{
+    background: transparent;
+    color: white;
+    border-color: white;
+}
+.btn-outline-white:hover{
+    background: white;
+    color: #8c50ff;
+}
