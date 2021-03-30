@@ -3,7 +3,8 @@
 {% block title %}{{ parent() }}Mentions légales{% endblock %}
 
 {% block body %}
-    <div class="container">
+<div class="container parallax rounded p-0" style="background-image: url({{ asset('img/background-body.jpg') }})">
+        <div class="container-fluid overlay-dark p-4">
         <h1>Mentions légales</h1>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum risus arcu, a cursus purus vulputate
@@ -34,4 +35,5 @@
             nisi.
         </p>
     </div>
+</div>
 {% endblock %}

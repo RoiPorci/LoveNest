@@ -17,70 +17,78 @@
         {% endblock %}
     </head>
     <body>
-    <div class="background-lovenest" style="background-image: url({{ asset('img/background-lovenest.jpeg') }})">
-        <header class="container-fluid sticky-top bg-transparent mb-2">
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="container">
-                    <a class="navbar-brand" href="{{ path('main_home') }}">
-                        <img src="{{ asset('img/logo-lovenest-final.png') }}" alt="Logo Lovenest" class="d-inline-block align-top logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav gap-2 me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="btn link-pink-light" aria-current="page" href="{{ path('main_home') }}">
-                                    <i class="fas fa-home"></i> Accueil
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="navbar-nav justify-content-end">
+    <div style="background-image: url({{ asset('img/background-body.jpg') }})">
+        <div class="bg-transparent">
+            <header class="container-fluid sticky-top mb-2" style="background-image: url({{ asset('img/background-body.jpg') }})">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <div class="container">
+                        <a class="navbar-brand" href="{{ path('main_home') }}">
+                            <img src="{{ asset('img/logo-lovenest-final.png') }}" alt="Logo Lovenest" class="d-inline-block align-top logo">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav gap-2 me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                        <a class="btn btn-outline-white" aria-current="page" href=""><i class="fas fa-user"></i> Déconnexion ()</a>
-                                        <a class="btn btn-pink" aria-current="page" href=""><i class="fas fa-heart"></i> <strong>Inscription</strong></a>
-                                        <a class="btn btn-outline-white" aria-current="page" href=""><i class="fas fa-user"></i> Connexion</a>
+                                    <a class="btn link-pink-light" aria-current="page" href="{{ path('main_home') }}">
+                                        <i class="fas fa-home"></i> Accueil
+                                    </a>
                                 </li>
+                            </ul>
+                            <div class="navbar-nav justify-content-end">
+                                <ul class="navbar-nav gap-2 me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="btn btn-outline-white" aria-current="page" href="">
+                                            <i class="fas fa-user"></i> Déconnexion ()
+                                        </a>
+                                        <a class="btn btn-pink" aria-current="page" href="">
+                                            <i class="fas fa-heart"></i> <strong>Inscription</strong>
+                                        </a>
+                                        <a class="btn btn-outline-white" aria-current="page" href="">
+                                            <i class="fas fa-user"></i> Connexion
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="container">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }} mt-2 text-center" role="alert">
+                            <p>{{ message }}</p>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+
+            <main>
+                {% block body %}
+                {% endblock %}
+            </main>
+
+            <footer class="container-fluid mt-2">
+                <div class="container pt-2">
+                    <div class="row">
+                        <div class="col">
+                            <ul class="nav">
+                                <li class="nav-link"><a href="{{ path("main_about_us") }}" class="link-pink-light">Qui sommes-nous?</a></li>
+                                <li class="nav-link"><a href="{{ path('main_cgu') }}" class="link-pink-light">CGU</a></li>
+                                <li class="nav-link"><a href="{{ path('main_legal_notice') }}" class="link-pink-light">Mentions légales</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            </nav>
-        </header>
-
-        <div class="container">
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ label }} mt-2 text-center" role="alert">
-                        <p>{{ message }}</p>
-                    </div>
-                {% endfor %}
-            {% endfor %}
-        </div>
-
-        <main class="container-fluid">
-            {% block body %}
-            {% endblock %}
-        </main>
-
-        <footer class="container-fluid bg-transparent mt-2">
-            <div class="container pt-2">
-                <div class="row">
-                    <div class="col">
-                        <ul class="nav">
-                            <li class="nav-link"><a href="{{ path("main_about_us") }}" class="link-pink-light">Qui sommes-nous?</a></li>
-                            <li class="nav-link"><a href="{{ path('main_cgu') }}" class="link-pink-light">CGU</a></li>
-                            <li class="nav-link"><a href="{{ path('main_legal_notice') }}" class="link-pink-light">Mentions légales</a></li>
-                        </ul>
-                    </div>
+                <div class="text-center pb-3 text-white">
+                    <p class="mb-0">Logo par <a href="https://dribbble.com/shots/15121595-LoveBird" class="link-pink-light">Deividas Bielskis</a></p>
+                    <p>&copy; Lovenest {{ "now"|date("Y") }}</p>
                 </div>
-            </div>
-            <div class="text-center pb-3 text-white">
-                <p class="mb-0">Logo par <a href="https://dribbble.com/shots/15121595-LoveBird" class="link-pink-light">Deividas Bielskis</a></p>
-                <p>&copy; Lovenest {{ "now"|date("Y") }}</p>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
     </body>
 </html>

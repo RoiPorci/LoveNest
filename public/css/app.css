@@ -5,8 +5,15 @@
 }
 
 /* Background */
-.background-lovenest{
+.parallax{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
 
+.overlay-dark{
+    background-color: rgba(0, 0, 0, 0.20);
 }
 
 .bg-purple{
@@ -16,6 +23,12 @@
 
 .bg-transparent{
     background-color: transparent;
+    color: white;
+}
+
+/* Text */
+.text-black{
+    color: black;
 }
 
 /* Link */
