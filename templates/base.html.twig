@@ -49,9 +49,10 @@
                                             <a class="btn btn-pink" aria-current="page" href="">
                                                 <i class="fas fa-heart"></i> <strong>Inscription</strong>
                                             </a>
-                                            <a class="btn btn-outline-white" aria-current="page" href="{{ path('app_login') }}">
+                                            <span role="button" class="btn btn-outline-white" aria-current="page"
+                                               data-bs-toggle="modal" data-bs-target="#displayLoginForm">
                                                 <i class="fas fa-user"></i> Connexion
-                                            </a>
+                                            </span>
                                         {% endif %}
                                     </li>
                                 </ul>
@@ -95,5 +96,55 @@
             </footer>
         </div>
     </div>
+
+    {% if not app.user %}
+        <!-- Modal -->
+        <div class="modal fade" id="displayLoginForm" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded" style="background-image: url({{ asset('img/pink-parallax.jpg') }})">
+                    <div class="bg-transparent">
+                    <div class="modal-header">
+                        <div class="col-1 align-self-start mt-1">
+                            <button role="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="col-11">
+                            <h5 class="modal-title" id="modalLabel">Connectez-vous!</h5>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ path('app_login') }}" method="post">
+                            <div class="form-group">
+                                <label for="inputLogin">Email ou pseudo</label>
+                                <input type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword">Mot de passe</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" >
+                            </div>
+                            <input type="hidden" name="_csrf_token"
+                                   value="{{ csrf_token('authenticate') }}">
+
+                            {#
+                            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                            See https://symfony.com/doc/current/security/remember_me.html
+
+                            <div class="checkbox mb-3">
+                                <label>
+                                    <input type="checkbox" name="_remember_me"> Remember me
+                                </label>
+                            </div>
+                            #}
+                            <div class="col-2 align-self-end">
+                                <button class="btn btn-pink mt-2" type="submit">
+                                    <strong>Connexion</strong>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
     </body>
 </html>

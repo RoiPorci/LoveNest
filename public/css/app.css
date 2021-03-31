@@ -9,7 +9,6 @@ body{
 }
 
 /* Hero */
-
 .hero{
     min-height: 600px;
     background-attachment: fixed;
@@ -36,7 +35,17 @@ body{
 
 .bg-purple{
     background-color: #1f125e;
-    color: #f969b9;
+    color: white;
+}
+
+.bg-dark-blue{
+    background-color: #060d77;
+    color: white;
+}
+
+.bg-blue{
+    background-color: #0d17ac;
+    color: white;
 }
 
 .bg-transparent{
@@ -74,4 +83,21 @@ body{
 .btn-outline-white:hover{
     background: white;
     color: #8c50ff;
+}
+
+/* Form */
+form label{
+    margin: 0.5em auto auto;
+}
+
+form .form-error-icon{
+    display: none;
+}
+
+form .form-check-input {
+    margin: 0.75em auto auto;
+}
+
+form btn{
+    margin: 0.5em auto auto;
 }

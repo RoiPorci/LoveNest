@@ -48,7 +48,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      * @return User
      * @throws NonUniqueResultException
      */
-    public function findUserByLogin(string $login): User{
+    public function findUserByLogin(string $login): ?User{
         $queryBuilder = $this->createQueryBuilder('u');
 
         $queryBuilder->select('u');
