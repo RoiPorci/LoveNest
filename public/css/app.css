@@ -9,44 +9,26 @@ body{
 }
 
 /* Hero */
-.hero{
-    min-height: 600px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100vh auto;
-}
-
 .hero-title{
     font-size: xxx-large;
 }
 
 /* Background */
-.parallax{
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
 .overlay-dark{
     background-color: rgba(0, 0, 0, 0.20);
-}
-
-.bg-purple{
-    background-color: #1f125e;
     color: white;
 }
 
-.bg-dark-blue{
-    background-color: #060d77;
+.bg-dark-white{
+    background-color: #212529;
     color: white;
 }
 
-.bg-blue{
-    background-color: #0d17ac;
-    color: white;
+.bg-dark-pink{
+    background-color: #212529;
+    color: #f969b9;
 }
+
 
 .bg-transparent{
     background-color: transparent;

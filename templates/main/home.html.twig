@@ -3,45 +3,90 @@
 {% block title %}{{ parent() }}Lovenest{% endblock %}
 
 {% block body %}
-<div class="container-fluid parallax hero my-4 p-0" style="background-image: url({{ asset('img/hero.jpg') }})">
-    <div class="container-fluid hero overlay-dark">
-        <div class="container d-flex justify-content-center">
-            <div>
-                <div class="col p-4 text-center my-auto" style="min-height: 600px">
-                    <h1 class="hero-title">
-                        <i class="fas fa-heart"></i> TROUVEZ VOTRE NID D'AMOUR <i class="fas fa-heart"></i>
-                    </h1>
+    <div class="container-fluid parallax-window" data-parallax="scroll" data-image-src="{{ asset('img/hero.jpg') }}" data-bleed="1000">
+            <div class="container d-flex justify-content-center bg-transparent">
+                    <div class="p-4 text-center" style="min-height: 600px">
+                        <h1 class="hero-title">
+                            <i class="fas fa-heart"></i> TROUVEZ VOTRE NID D'AMOUR <i class="fas fa-heart"></i>
+                        </h1>
+                </div>
+            </div>
+    </div>
+    <div class="container-fluid bg-dark-pink text-center p-4">
+        <h1>LOVENEST <i class="fas fa-heart"></i></h1>
+    </div>
+    <div class="container-fluid rounded parallax-container">
+        <div class="container overlay-dark rounded my-2 p-4">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum risus arcu, a cursus purus vulputate
+                id. Praesent vestibulum augue facilisis ante tincidunt vulputate. Proin cursus felis et massa sagittis, vel
+                congue leo gravida. In pretium luctus nunc, vel consequat sapien semper nec. Mauris pretium fringilla laoreet.
+                Phasellus tincidunt condimentum tincidunt. Vestibulum quis ligula vitae tortor viverra consequat ut vehicula
+                nisi.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum risus arcu, a cursus purus vulputate
+                id. Praesent vestibulum augue facilisis ante tincidunt vulputate. Proin cursus felis et massa sagittis, vel
+                congue leo gravida. In pretium luctus nunc, vel consequat sapien semper nec. Mauris pretium fringilla laoreet.
+                Phasellus tincidunt condimentum tincidunt. Vestibulum quis ligula vitae tortor viverra consequat ut vehicula
+                nisi.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum risus arcu, a cursus purus vulputate
+                id. Praesent vestibulum augue facilisis ante tincidunt vulputate. Proin cursus felis et massa sagittis, vel
+                congue leo gravida. In pretium luctus nunc, vel consequat sapien semper nec. Mauris pretium fringilla laoreet.
+                Phasellus tincidunt condimentum tincidunt. Vestibulum quis ligula vitae tortor viverra consequat ut vehicula
+                nisi.
+            </p>
+        </div>
+    </div>
+    {% if not app.user %}
+        <!-- Modal -->
+        <div class="modal fade" id="displayLoginForm" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded" style="background-image: url({{ asset('img/pink-parallax.jpg') }})">
+                    <div class="bg-transparent">
+                        <div class="modal-header">
+                            <div class="col-1 align-self-start mt-1">
+                                <button role="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="col-11">
+                                <h5 class="modal-title" id="modalLabel">Connectez-vous!</h5>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ path('app_login') }}" method="post">
+                                <div class="form-group">
+                                    <label for="inputLogin">Email ou pseudo</label>
+                                    <input type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword">Mot de passe</label>
+                                    <input type="password" name="password" id="inputPassword" class="form-control" >
+                                </div>
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}">
+
+                                {#
+                                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                See https://symfony.com/doc/current/security/remember_me.html
+
+                                <div class="checkbox mb-3">
+                                    <label>
+                                        <input type="checkbox" name="_remember_me"> Remember me
+                                    </label>
+                                </div>
+                                #}
+                                <div class="col-2 align-self-end">
+                                    <button class="btn btn-pink mt-2" type="submit">
+                                        <strong>Connexion</strong>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="container-fluid bg-transparent text-center">
-    <h1>LOVENEST <i class="fas fa-heart"></i></h1>
-</div>
-    <div class="container parallax rounded p-0" style="background-image: url({{ asset('img/background-body.jpg') }})">
-        <div class="container-fluid overlay-dark p-4">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum risus arcu, a cursus purus vulputate
-                id. Praesent vestibulum augue facilisis ante tincidunt vulputate. Proin cursus felis et massa sagittis, vel
-                congue leo gravida. In pretium luctus nunc, vel consequat sapien semper nec. Mauris pretium fringilla laoreet.
-                Phasellus tincidunt condimentum tincidunt. Vestibulum quis ligula vitae tortor viverra consequat ut vehicula
-                nisi.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum risus arcu, a cursus purus vulputate
-                id. Praesent vestibulum augue facilisis ante tincidunt vulputate. Proin cursus felis et massa sagittis, vel
-                congue leo gravida. In pretium luctus nunc, vel consequat sapien semper nec. Mauris pretium fringilla laoreet.
-                Phasellus tincidunt condimentum tincidunt. Vestibulum quis ligula vitae tortor viverra consequat ut vehicula
-                nisi.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum risus arcu, a cursus purus vulputate
-                id. Praesent vestibulum augue facilisis ante tincidunt vulputate. Proin cursus felis et massa sagittis, vel
-                congue leo gravida. In pretium luctus nunc, vel consequat sapien semper nec. Mauris pretium fringilla laoreet.
-                Phasellus tincidunt condimentum tincidunt. Vestibulum quis ligula vitae tortor viverra consequat ut vehicula
-                nisi.
-            </p>
-        </div>
-    </div>
+    {% endif %}
 {% endblock %}
