@@ -23,16 +23,21 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @Assert\NotBlank(message="Veuillez renseigner votre pseudo!")
+     * @Assert\NotBlank(
+     *     groups="registration",
+     *     message="Veuillez renseigner votre pseudo!"
+     * )
      * @Assert\Length(
+     *     groups="registration",
      *     min=3,
      *     max=50,
      *     minMessage="{{ limit }} caractères minimum svp!",
      *     maxMessage="{{ limit }} caractères maximum svp!"
      * )
      * @Assert\Regex(
-     *     pattern="/^[\w]{3,}$/",
-     *     message="Seuls les caractères alphanumériques et ._ sont acceptés!"
+     *     groups="registration",
+     *     pattern="/^[\w]*$/",
+     *     message="Seuls les caractères alphanumériques et _ sont acceptés!"
      * )
      * @ORM\Column(type="string", length=180, unique=true)
      */
@@ -51,6 +56,7 @@ class User implements UserInterface
 
     /**
      * @Assert\LessThan(
+     *     groups="completeRegistration",
      *     value="-18 years",
      *     message="Il faut avoir au moins 18ans!"
      * )
@@ -59,14 +65,21 @@ class User implements UserInterface
     private $birth_date;
 
     /**
-     * @Assert\NotBlank(message="Veuillez renseigner votre genre!")
+     * @Assert\NotBlank(
+     *     groups="completeRegistration",
+     *     message="Veuillez renseigner votre genre!"
+     * )
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $gender;
 
     /**
-     * @Assert\NotBlank(message="Veuillez renseigner votre code postal!")
+     * @Assert\NotBlank(
+     *     groups="completeRegistration",
+     *     message="Veuillez renseigner votre code postal!"
+     * )
      * @Assert\Regex(
+     *     groups="completeRegistration",
      *     pattern="/^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$/",
      *     message="Veuillez renseigner un code postal français!"
      * )
@@ -75,14 +88,21 @@ class User implements UserInterface
     private $zip_code;
 
     /**
-     * @Assert\NotBlank(message="Veuillez renseigner la ville dans laquelle vous vivez!")
+     * @Assert\NotBlank(
+     *     groups="completeRegistration",
+     *     message="Veuillez renseigner la ville dans laquelle vous vivez!"
+     * )
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $city;
 
     /**
-     * @Assert\NotBlank(message="Veuillez renseigner votre email!")
+     * @Assert\NotBlank(
+     *     groups="registration",
+     *     message="Veuillez renseigner votre email!"
+     * )
      * @Assert\Length(
+     *     groups="registration",
      *     min=6,
      *     max=250,
      *     minMessage="{{ limit }} caractères minimum svp!",
@@ -96,6 +116,11 @@ class User implements UserInterface
      * @ORM\Column(type="datetime")
      */
     private $date_created;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date_updated;
 
     public function getId(): ?int
     {
@@ -241,6 +266,18 @@ class User implements UserInterface
     public function setDateCreated(\DateTimeInterface $date_created): self
     {
         $this->date_created = $date_created;
+
+        return $this;
+    }
+
+    public function getDateUpdated(): ?\DateTimeInterface
+    {
+        return $this->date_updated;
+    }
+
+    public function setDateUpdated(?\DateTimeInterface $date_updated): self
+    {
+        $this->date_updated = $date_updated;
 
         return $this;
     }

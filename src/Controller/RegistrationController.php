@@ -33,7 +33,9 @@ class RegistrationController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user, [
+            'validation_groups' => ['registration'],
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

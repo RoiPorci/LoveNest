@@ -32,14 +32,16 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'type' => PasswordType::class,
-                'invalid_message' => 'Le mot de passe doit correspondre!',
+                'invalid_message' => 'Le mot de passe de confirmation doit correspondre!',
                 'first_options' => ['label' => 'Mot de passe',],
                 'second_options' => ['label' => 'Confirmez votre mot de passe',],
                 'constraints' => [
                     new NotBlank([
+                        'groups' => ['registration'],
                         'message' => 'Veuillez entrer un mot de passe',
                     ]),
                     new Length([
+                        'groups' => ['registration'],
                         'min' => 6,
                         'minMessage' => '{{ limit }} caractères minimum requis',
                         // max length allowed by Symfony for security reasons
@@ -54,6 +56,7 @@ class RegistrationFormType extends AbstractType
                 'label' => "J'accepte les Termes et conditions",
                 'constraints' => [
                     new IsTrue([
+                        'groups' => ['registration'],
                         'message' => 'Vous devez acceptez les termes!',
                     ]),
                 ],
