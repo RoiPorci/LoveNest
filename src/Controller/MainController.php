@@ -25,28 +25,43 @@ class MainController extends AbstractController
 
     /**
      * @Route("/about-us", name="main_about_us")
+     * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
-    public function aboutUs(): Response
+    public function aboutUs(AuthenticationUtils $authenticationUtils): Response
     {
-        return $this->render('main/about_us.html.twig');
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('main/about_us.html.twig', [
+            'last_username' => $lastUsername,
+        ]);
     }
 
     /**
      * @Route("/conditions-generales-d-utilisation", name="main_cgu")
+     * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
-    public function cgu(): Response
+    public function cgu(AuthenticationUtils $authenticationUtils): Response
     {
-        return $this->render('main/cgu.html.twig');
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('main/cgu.html.twig', [
+            'last_username' => $lastUsername,
+        ]);
     }
 
     /**
      * @Route("/mentions-legales", name="main_legal_notice")
+     * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
-    public function legalNotice(): Response
+    public function legalNotice(AuthenticationUtils $authenticationUtils): Response
     {
-        return $this->render('main/legal_notice.html.twig');
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('main/legal_notice.html.twig', [
+            'last_username' => $lastUsername,
+        ]);
     }
 }

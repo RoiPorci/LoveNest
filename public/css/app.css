@@ -13,9 +13,14 @@ body{
     font-size: xxx-large;
 }
 
+/* Height */
+.min-height-800{
+    min-height: 800px;
+}
+
 /* Background */
 .overlay-dark{
-    background-color: rgba(0, 0, 0, 0.20);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
 }
 
@@ -28,7 +33,6 @@ body{
     background-color: #212529;
     color: #f969b9;
 }
-
 
 .bg-transparent{
     background-color: transparent;
@@ -51,10 +55,20 @@ body{
 /* Button */
 .btn-pink{
     background-color: #f969b9;
-    color: #1f125e;
+    color: #212529;
 }
 .btn-pink:hover{
     background-color: #f969b9;
+}
+
+.btn-black{
+    background-color: #212529;
+    color: #FFFFFF;
+}
+
+.btn-black:hover{
+    background-color: #212529;
+    color: #f969b9;
 }
 
 .btn-outline-white{
