@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\FinalUserType;
 use App\Form\RegistrationFormType;
 use App\Security\AppAuthenticator;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,6 +48,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $user->setDateCreated(new \DateTime());
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -63,6 +66,36 @@ class RegistrationController extends AbstractController
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
             'last_username' => $lastUsername,
+        ]);
+    }
+
+    /**
+     * @IsGranted("ROLE_ANONYMOUS")
+     * @Route("/register/2", name="app_final_register")
+     * @param Request $request
+     * @return Response
+     */
+    public function finishRegistration(Request $request): Response
+    {
+        $user = $this->getUser();
+
+        $form = $this->createForm(FinalUserType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setDateUpdated(new \DateTime());
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Bienvenue ' . $user->getUsername() . '!');
+
+            return $this->redirectToRoute('main_home');
+        }
+
+        return $this->render('registration/final_registration.html.twig', [
+            'registrationForm' => $form->createView(),
         ]);
     }
 }

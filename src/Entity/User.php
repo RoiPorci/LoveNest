@@ -150,8 +150,8 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has IS_AUTHENTICATED_ANONYMOUSLY
-        $roles[] = 'IS_AUTHENTICATED_ANONYMOUSLY';
+        // guarantee every user at least has ROLE_ANONYMOUS
+        $roles[] = 'ROLE_ANONYMOUS';
 
         return array_unique($roles);
     }
