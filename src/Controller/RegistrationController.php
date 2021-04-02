@@ -73,17 +73,22 @@ class RegistrationController extends AbstractController
      * @IsGranted("ROLE_ANONYMOUS")
      * @Route("/register/2", name="app_final_register")
      * @param Request $request
+     * @param GuardAuthenticatorHandler $guardHandler
+     * @param AppAuthenticator $authenticator
      * @return Response
      */
-    public function finishRegistration(Request $request): Response
+    public function finishRegistration(Request $request, GuardAuthenticatorHandler $guardHandler, AppAuthenticator $authenticator): Response
     {
         $user = $this->getUser();
 
-        $form = $this->createForm(FinalUserType::class);
+        $form = $this->createForm(FinalUserType::class, $user, [
+            'validation_groups' => ['completeRegistration'],
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setDateUpdated(new \DateTime());
+            $user->setRoles(['ROLE_USER']);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -91,7 +96,12 @@ class RegistrationController extends AbstractController
 
             $this->addFlash('success', 'Bienvenue ' . $user->getUsername() . '!');
 
-            return $this->redirectToRoute('main_home');
+            return $guardHandler->authenticateUserAndHandleSuccess(
+                $user,
+                $request,
+                $authenticator,
+                'main' // firewall name in security.yaml
+            );
         }
 
         return $this->render('registration/final_registration.html.twig', [

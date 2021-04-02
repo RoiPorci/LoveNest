@@ -16,7 +16,8 @@ class FinalUserType extends AbstractType
         $builder
             ->add('birth_date', DateType::class, [
                 'label' => 'Date de naissance',
-                'required' => false
+                'required' => false,
+                'widget' => 'single_text'
             ])
             ->add('gender', TextType::class, [
                 'label' => 'Genre',
@@ -37,10 +38,6 @@ class FinalUserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'validation_groups' => [
-                User::class,
-                'completeRegistration'
-            ]
         ]);
     }
 }

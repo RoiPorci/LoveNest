@@ -18,6 +18,13 @@ class MainController extends AbstractController
     {
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        $isAnonymous = $this->isGranted("ROLE_ANONYMOUS");
+        $isUser = $this->isGranted("ROLE_USER");
+
+        if (!$isUser && $isAnonymous) {
+            return $this->redirectToRoute('app_final_register');
+        }
+
         return $this->render('main/home.html.twig', [
             'last_username' => $lastUsername,
         ]);
